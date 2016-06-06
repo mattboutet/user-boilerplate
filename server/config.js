@@ -1,6 +1,7 @@
 'use strict';
 
 const Path = require('path');
+const Creds = require('./credentials');
 
 module.exports = {
 
@@ -13,12 +14,22 @@ module.exports = {
 
     dogwater: {
         connections: {
-            diskDb: {
-                adapter: 'disk'
+            mysql: {
+                adapter: 'mysql',
+
+                host      : 'localhost',
+                port      : 3306,
+                user      : Creds.mysqlCreds.user,
+                password  : Creds.mysqlCreds.password,
+                database  : 'user-boilerplate',
+                connectionLimit: 30,
+                // Optional
+                charset   : 'utf8',
+                collation : 'utf8_swedish_ci'
             }
         },
         adapters: {
-            disk: require('sails-disk')
+            mysql: require('sails-mysql')
         },
         models: Path.normalize(`${__dirname}/../lib/models`),
         data: {
@@ -29,6 +40,9 @@ module.exports = {
 
     poop: {
         logPath: Path.normalize(`${__dirname}/../poop.log`)
-    }
+    },
 
+    secrets: {
+        jwtSecret: Creds.secrets.jwtSecret
+    }
 };
