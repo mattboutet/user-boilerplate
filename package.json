@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-api",
+  "name": "user-boilerplate",
   "version": "0.3.0",
-  "description": "Boilerplate API",
+  "description": "Boilerplate API with User",
   "main": "lib/index.js",
   "scripts": {
     "start": "node server",
