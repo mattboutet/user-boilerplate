@@ -36,6 +36,7 @@
     "jsonwebtoken": "5.x.x",
     "labbable": "1.x.x",
     "loveboat": "1.x.x",
+    "node-uuid": "1.4.x",
     "poop": "2.x.x",
     "sails-disk": "0.10.x",
     "sails-mysql": "0.12.x",
