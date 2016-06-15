@@ -48,7 +48,6 @@ Name | Description
 [hapi-swagger](https://github.com/glennjones/hapi-swagger) | A Swagger interface for hapi
 [lab](https://github.com/hapijs/lab) | Node.js test framework
 [labbable](https://github.com/devinivy/labbable) | No-fuss hapi server testing
-
 [hapi-auth-jwt2](https://github.com/dwyl/hapi-auth-jwt2) | Secure Hapi.js authentication plugin using JSON Web Tokens
 
 ### Test It Out!
@@ -64,7 +63,7 @@ Time to make a `user`! Make a `POST` request to the `users` endpoint.
 }
 ```
 
-Now browse back to http://0.0.0.0:3000/users and you should get a response like this:
+Now send a `GET` request to the `users` endpoint and you should get a response like this:
 
 ```json
 [{
@@ -88,4 +87,16 @@ If you `POST` the `login` route:
   "password": "test"
 }
 ```
-It will return a JWT that can
+It will return a JWT that can then be used in the headers of any request to an authenticated endpoint - select the `user` endpoint and paste the JWT you received from the `login` route above into the `authorization` field in the Swagger-UI:
+```json
+{
+  "email": "test@test.com",
+  "password": "$2a$10$8hoUmAcYKGcTyv.isy2xb.IYnB2KBGCytdqXHDrIfhiGZg4s8TvNa",
+  "firstName": "Test",
+  "lastName": "Test",
+  "resetToken": "",
+  "id": 1,
+  "createdAt": "2016-06-06T01:50:37.000Z",
+  "updatedAt": "2016-06-15T15:18:51.000Z"
+}
+```
