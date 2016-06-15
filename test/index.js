@@ -34,7 +34,7 @@ describe('Boilerplate API server', () => {
 
     it('has the main API plugin registered.', (done) => {
 
-        expect(server.registrations['boilerplate-api']).to.exist();
+        expect(server.registrations['user-boilerplate']).to.exist();
         done();
     });
 });

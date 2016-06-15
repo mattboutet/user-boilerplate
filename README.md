@@ -1,36 +1,91 @@
-Boilerplate API
+User Boilerplate
 ===
-A hapi boilerplate that makes creating APIs easy
+
+A general purpose boilerplate for building APIs with hapi, with built in user model and JWT-based authentication.  Based on https://github.com/devinivy/boilerplate-api
 
 ## Getting Started
-- Clone this repo: `git clone git@github.com:devinivy/boilerplate-api.git .`
-- Create a new repo on github, `new-api`.
-- Change origin to point to your new API: `git remote set-url origin git@github.com:your-username/new-api.git`
-- Replace references to "boilerplate" (`grep -rIni --color boilerplate *`), add model, and get developing.
+In this example our project is called `my-project`
 
-## Tools
-Here are a list of tools we include in the project
+```bash
+$ git clone git@github.com:mattboutet/user-boilerplate.git my-project
+$ cd my-project
+$ git remote set-url origin git@github.com:your-username/my-project.git
+```
 
-### Dogwater
-A hapi plugin that integrates the Waterline ORM | [Learn More](https://github.com/devinivy/dogwater)
+Now install the dependencies and start running the server
 
- - Place each model as a separate file in lib/models
- - Place fixtures as prescribed by dogwater in lib/fixtures.js
+```bash
+$ npm install
+$ npm test
+$ NODE_ENV=dev npm start
+```
 
-### Bedwetter
-A hapi plugin that auto-generates RESTful CRUDdy route handlers | [Learn More](https://github.com/devinivy/bedwetter)
+If everything goes well you should see this
 
-### bassmaster
-A hapi plugin that handles batch requests | [Learn More](https://www.npmjs.org/package/bassmaster)
+```bash
+> user-boilerplate@0.3.0 start /Users/matt/domains/user-boilerplate
+> node server
+Server started at http://0.0.0.0:3000
+```
 
-### Other tools
-This project also contains:
- - lab for a test suite
- - poop for uncaught errors
- - hoek for utils and assertions   
- - joi for payload validation
- - boom for standard HTTP errors
- - hapi-swagger for API documentation
- - sails-disk as a stand-in persistent database.
+Now your app is running at [http://0.0.0.0:3000](http://0.0.0.0:3000)
 
-Check-out bell and hapi-auth-jwt2 for authentication.
+### Tools
+Here are a list of tools we include in the project :octocat:
+
+Name | Description
+------------ | -------------
+[dogwater](https://github.com/devinivy/dogwater) | Integrates the Waterline ORM  
+[sails-disk](https://github.com/balderdashy/sails-disk) | A local disk adapter for Waterline ORM
+[sails-mysql](https://github.com/balderdashy/sails-mysql) | A MySQL adapter for Waterline ORM]
+[haute-couture](https://github.com/devinivy/haute-couture) | File-based hapi plugin composer
+[glue](https://github.com/hapijs/glue) | Server composer for hapi.js
+[hoek](https://github.com/hapijs/hoek) | Node utilities shared amongst the extended hapi universe
+[joi](https://github.com/hapijs/joi) | Object schema validation
+[bassmaster](https://github.com/hapijs/bassmaster) | Batch request plugin for hapi
+[poop](https://github.com/hapijs/poop) | hapi plugin for handling uncaught exceptions
+[boom](https://github.com/hapijs/boom) | HTTP-friendly error objects
+[hapi-swagger](https://github.com/glennjones/hapi-swagger) | A Swagger interface for hapi
+[lab](https://github.com/hapijs/lab) | Node.js test framework
+[labbable](https://github.com/devinivy/labbable) | No-fuss hapi server testing
+
+[hapi-auth-jwt2](https://github.com/dwyl/hapi-auth-jwt2) | Secure Hapi.js authentication plugin using JSON Web Tokens
+
+### Test It Out!
+Browse to http://0.0.0.0:3000/swagger
+
+Time to make a `user`! Make a `POST` request to the `users` endpoint.
+```json
+{
+  "email": "test@test.com",
+  "password": "test",
+  "firstName": "test",
+  "lastName": "test"
+}
+```
+
+Now browse back to http://0.0.0.0:3000/users and you should get a response like this:
+
+```json
+[{
+  "email": "test@test.com",
+  "password": "$2a$10$8hoUmAcYKGcTyv.isy2xb.IYnB2KBGCytdqXHDrIfhiGZg4s8TvNa",
+  "firstName": "Test",
+  "lastName": "Test",
+  "resetToken": "",
+  "id": 1,
+  "createdAt": "2016-06-06T01:50:37.000Z",
+  "updatedAt": "2016-06-15T15:18:51.000Z"
+}]
+
+```
+
+If you `POST` the `login` route:
+
+```json
+{
+  "email": "test@test.com",
+  "password": "test"
+}
+```
+It will return a JWT that can
