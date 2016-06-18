@@ -10,7 +10,12 @@ module.exports = {
         port: process.env.PORT || 3000
     },
 
-    api: {},
+    main: {
+        connection: process.env.NODE_ENV === 'dev' ? 'disk' : 'mysql',
+        secrets: {
+            jwtSecret: Creds.secrets.jwtSecret
+        }
+    },
 
     dogwater: {
         connections: {
@@ -26,23 +31,17 @@ module.exports = {
                 // Optional
                 charset   : 'utf8',
                 collation : 'utf8_swedish_ci'
-            }
+            },
+            disk: { adapter: 'disk' }
         },
         adapters: {
+            disk: require('sails-disk'),
             mysql: require('sails-mysql')
-        },
-        models: Path.normalize(`${__dirname}/../lib/models`),
-        data: {
-            dir: Path.normalize(`${__dirname}/../lib`),
-            pattern: 'fixtures.js'
         }
     },
 
     poop: {
         logPath: Path.normalize(`${__dirname}/../poop.log`)
-    },
-
-    secrets: {
-        jwtSecret: Creds.secrets.jwtSecret
     }
+
 };
