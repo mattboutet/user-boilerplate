@@ -40,7 +40,8 @@
     "sails-disk": "0.10.x",
     "sails-mysql": "0.12.x",
     "vision": "4.x.x",
-    "waterline": "0.12.x"
+    "waterline": "0.12.x",
+    "waterline-to-boom": "1.x.x"
   },
   "devDependencies": {
     "code": "3.x.x",
