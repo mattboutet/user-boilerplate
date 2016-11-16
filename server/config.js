@@ -1,7 +1,13 @@
 'use strict';
 
 const Path = require('path');
-const Creds = require('./credentials');
+let Creds = {};
+try {
+    Creds = require('./credentials');
+}
+catch (ignoreException){
+    Creds = require('./credentials-sample');
+}
 
 module.exports = {
 
@@ -11,7 +17,7 @@ module.exports = {
     },
 
     main: {
-        connection: process.env.NODE_ENV === 'dev' ? 'disk' : 'mysql',
+        connection: process.env.NODE_ENV === 'test' ? 'disk' : 'mysql',
         secrets: {
             jwtSecret: Creds.secrets.jwtSecret
         }
