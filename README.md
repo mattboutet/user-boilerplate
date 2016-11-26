@@ -1,5 +1,4 @@
 User Boilerplate
-===
 
 A general purpose boilerplate for building APIs with hapi, with built in user model and JWT-based authentication.  Based on https://github.com/devinivy/boilerplate-api
 
@@ -24,9 +23,6 @@ If everything goes well you should see this
 
 ```bash
 > user-boilerplate@0.3.0 start /Users/matt/domains/user-boilerplate
-> node server
-Server started at http://0.0.0.0:3000
-```
 
 Now your app is running at [http://0.0.0.0:3000](http://0.0.0.0:3000)
 
@@ -43,7 +39,6 @@ Name | Description
 [hoek](https://github.com/hapijs/hoek) | Node utilities shared amongst the extended hapi universe
 [joi](https://github.com/hapijs/joi) | Object schema validation
 [bassmaster](https://github.com/hapijs/bassmaster) | Batch request plugin for hapi
-[poop](https://github.com/hapijs/poop) | hapi plugin for handling uncaught exceptions
 [boom](https://github.com/hapijs/boom) | HTTP-friendly error objects
 [hapi-swagger](https://github.com/glennjones/hapi-swagger) | A Swagger interface for hapi
 [lab](https://github.com/hapijs/lab) | Node.js test framework

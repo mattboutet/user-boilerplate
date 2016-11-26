@@ -1,6 +1,5 @@
 'use strict';
 
-const Path = require('path');
 let Creds = {};
 try {
     Creds = require('./credentials');
@@ -8,6 +7,9 @@ try {
 catch (ignoreException){
     Creds = require('./credentials-sample');
 }
+
+const SailsDisk = require('sails-disk');
+const SailsMySQL = require('sails-mysql');
 
 module.exports = {
 
@@ -41,13 +43,8 @@ module.exports = {
             disk: { adapter: 'disk' }
         },
         adapters: {
-            disk: require('sails-disk'),
-            mysql: require('sails-mysql')
+            disk: SailsDisk,
+            mysql:  SailsMySQL
         }
-    },
-
-    poop: {
-        logPath: Path.normalize(`${__dirname}/../poop.log`)
     }
-
 };
