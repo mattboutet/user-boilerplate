@@ -23,7 +23,7 @@ If everything goes well you should see this
 
 ```bash
 > user-boilerplate@0.3.0 start /Users/matt/domains/user-boilerplate
--> node server
+> node server
  Server started at http://0.0.0.0:3000
 ```
 
