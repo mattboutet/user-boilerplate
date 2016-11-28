@@ -18,7 +18,7 @@ describe('Boilerplate API server', () => {
 
     let server;
 
-    before((done) => {
+    before({ timeout: 5000 }, (done) => {
 
         LabbableServer.ready((err, srv) => {
 
