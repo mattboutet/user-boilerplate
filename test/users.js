@@ -42,8 +42,8 @@ describe('User Boilerplate API server', () => {
                 method: 'POST',
                 url: '/users',
                 payload: {
-                    email: 'test1@test.com',
-                    password: 'password1',
+                    email: 'test@test.com',
+                    password: 'password',
                     firstName: 'Test',
                     lastName: 'Test'
                 }
@@ -55,7 +55,7 @@ describe('User Boilerplate API server', () => {
 
                 expect(response.statusCode).to.equal(200);
                 expect(result).to.be.an.object();
-                expect(result.email).to.equal('test1@test.com');
+                expect(result.email).to.equal('test@test.com');
                 done();
             });
         });
@@ -132,7 +132,7 @@ describe('User Boilerplate API server', () => {
 
             server.inject(options, (response) => {
 
-                const userId = response.result[1].id;
+                const userId = response.result[0].id;
                 const delOptions = {
                     method: 'DELETE',
                     url: '/users/' + userId
