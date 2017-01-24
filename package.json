@@ -1,6 +1,6 @@
 {
   "name": "user-boilerplate",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "User Boilerplate",
   "main": "lib/index.js",
   "scripts": {
@@ -21,28 +21,28 @@
   "dependencies": {
     "bassmaster": "2.x.x",
     "bcrypt": "0.8.x",
-    "hapi-auth-jwt2": "5.x.x",
-    "jsonwebtoken": "5.x.x",
-    "node-uuid": "1.4.x",
-    "sails-mysql": "0.12.x",
-    "vision": "4.x.x",
-    "waterline": "0.12.x",
-    "waterline-to-boom": "1.x.x",
     "boom": "4.x.x",
     "dogwater": ">=2.2.0 <3",
     "glue": "4.x.x",
     "handlebars": "4.x.x",
     "hapi": "16.x.x",
+    "hapi-auth-jwt2": "5.x.x",
     "hapi-swagger": "7.x.x",
     "haute-couture": ">=1.3.0 <2",
     "hoek": "4.x.x",
     "inert": "4.x.x",
     "joi": "10.x.x",
+    "jsonwebtoken": "5.x.x",
+    "knex": "^0.12.6",
     "labbable": "2.x.x",
+    "node-uuid": "1.4.x",
+    "objection": "^0.6.2",
     "sails-disk": "0.10.x",
+    "sails-mysql": "0.12.x",
+    "uuid": "^3.0.1",
     "vision": "4.x.x",
-    "waterline": "0.12.x"
-
+    "waterline": "0.12.x",
+    "waterline-to-boom": "1.x.x"
   },
   "devDependencies": {
     "code": "3.x.x",
