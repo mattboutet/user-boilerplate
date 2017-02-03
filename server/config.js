@@ -8,8 +8,25 @@ catch (ignoreException){
     Creds = require('./credentials-sample');
 }
 
-const SailsDisk = require('sails-disk');
-const SailsMySQL = require('sails-mysql');
+const knexTest = {
+    client: 'sqlite3',
+    connection: {
+        filename: ':memory:'
+    },
+    useNullAsDefault: true
+};
+
+const knexLive = {
+    client: 'mysql',
+    connection: {
+        host      : 'localhost',
+        user      : Creds.mysqlCreds.user,
+        password  : Creds.mysqlCreds.password,
+        database  : 'user-boilerplate'
+    },
+    useNullAsDefault: true,
+    debug: true
+};
 
 module.exports = {
 
@@ -19,32 +36,13 @@ module.exports = {
     },
 
     main: {
-        connection: process.env.NODE_ENV === 'test' ? 'disk' : 'mysql',
+        connection: 'schwifty',
         secrets: {
             jwtSecret: Creds.secrets.jwtSecret
         }
     },
 
-    dogwater: {
-        connections: {
-            mysql: {
-                adapter: 'mysql',
-
-                host      : 'localhost',
-                port      : 3306,
-                user      : Creds.mysqlCreds.user,
-                password  : Creds.mysqlCreds.password,
-                database  : 'user-boilerplate',
-                connectionLimit: 30,
-                // Optional
-                charset   : 'utf8',
-                collation : 'utf8_swedish_ci'
-            },
-            disk: { adapter: 'disk' }
-        },
-        adapters: {
-            disk: SailsDisk,
-            mysql:  SailsMySQL
-        }
+    schwifty: {
+        knex: process.env.NODE_ENV === 'test' ? knexTest : knexLive
     }
 };

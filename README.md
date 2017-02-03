@@ -34,9 +34,9 @@ Here are a list of tools we include in the project :octocat:
 
 Name | Description
 ------------ | -------------
-[dogwater](https://github.com/devinivy/dogwater) | Integrates the Waterline ORM  
-[sails-disk](https://github.com/balderdashy/sails-disk) | A local disk adapter for Waterline ORM
-[sails-mysql](https://github.com/balderdashy/sails-mysql) | A MySQL adapter for Waterline ORM]
+[schwifty](https://github.com/BigRoomStudios/schwifty) | Integrates Objection ORM
+[objection](https://github.com/Vincit/objection.js/) | SQL-Friendly ORM
+[knex](https://github.com/tgriesser/knex) | Multi-dialect SQL Query builder
 [haute-couture](https://github.com/devinivy/haute-couture) | File-based hapi plugin composer
 [glue](https://github.com/hapijs/glue) | Server composer for hapi.js
 [hoek](https://github.com/hapijs/hoek) | Node utilities shared amongst the extended hapi universe

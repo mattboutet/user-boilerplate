@@ -22,8 +22,8 @@ const manifest = module.exports = {
     registrations: [
         {
             plugin: {
-                register: 'dogwater',
-                options: Config.dogwater
+                register: 'schwifty',
+                options: Config.schwifty
             }
         },
         {
@@ -51,7 +51,7 @@ const manifest = module.exports = {
 
 };
 
-if (process.env.NODE_ENV === 'dev') {
+if (process.env.NODE_ENV !== 'prod') {
     manifest.server.debug = {
         log: ['error', 'implementation', 'internal'],
         request: ['error', 'implementation', 'internal']
