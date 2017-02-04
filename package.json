@@ -1,6 +1,6 @@
 {
   "name": "user-boilerplate",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "User Boilerplate",
   "main": "lib/index.js",
   "scripts": {
@@ -36,6 +36,7 @@
     "labbable": "2.x.x",
     "mysql": "2.x.x",
     "objection": "0.x.x",
+    "schwifty": "1.x.x",
     "sqlite3": "3.x.x",
     "uuid": "3.x.x",
     "vision": "4.x.x"

@@ -4,6 +4,8 @@
 
 const Lab = require('lab');
 const Code = require('code');
+const Items = require('items');
+
 const LabbableServer = require('../server');
 
 // Test shortcuts
@@ -29,8 +31,79 @@ describe('User Boilerplate API server', () => {
             }
 
             server = srv;
+            //set up schema for tests to operate on
+            const tables = [
+                {
+                    tableName: 'users',
+                    columns: [
+                        {
+                            name: 'id',
+                            type: 'integer',
+                            primary: 'true'
+                        },
+                        {
+                            name: 'email',
+                            type: 'string'
+                        },
+                        {
+                            name: 'password',
+                            type: 'string'
+                        },
+                        {
+                            name: 'firstName',
+                            type: 'string'
+                        },
+                        {
+                            name: 'lastName',
+                            type: 'string'
+                        },
+                        {
+                            name: 'resetToken',
+                            type: 'string'
+                        }
+                    ]
+                },
+                {
+                    tableName: 'tokens',
+                    columns: [
+                        {
+                            name: 'id',
+                            type: 'string'
+                        },
+                        {
+                            name: 'user',
+                            type: 'integer'
+                        }
+                    ]
+                }
+            ];
 
-            return done();
+            const knex = server.knex();
+
+            Items.parallel(tables, (knexTable, next) => {
+
+                knex.schema.createTableIfNotExists(knexTable.tableName, (table) => {
+
+                    Items.parallel(knexTable.columns, (column, columnNext) => {
+
+                        if (column.primary === 'true'){
+                            table[column.type](column.name).primary();
+                        }
+                        else {
+                            table[column.type](column.name);
+                        }
+                        columnNext();
+                    }, (columnErr) => {
+
+                        expect(columnErr).to.equal(undefined);
+                    });
+                }).then(next);
+            }, (err) => {
+
+                //coming out of knex promise should be empty array instead of undef
+                expect(err).to.equal([]);
+                return done();
+            });
         });
     });
 
@@ -86,13 +159,16 @@ describe('User Boilerplate API server', () => {
 
             const options = {
                 method: 'GET',
-                url: '/users'
+                url: '/users',
+                headers : {
+                    'Authorization' : jwt,
+                    'Content-Type' : 'application/json; charset=utf-8'
+                }
             };
 
             server.inject(options, (response) => {
 
                 const result = response.result;
-
                 expect(response.statusCode).to.equal(200);
                 expect(result).to.be.an.array();
 
@@ -127,7 +203,11 @@ describe('User Boilerplate API server', () => {
 
             const options = {
                 method: 'GET',
-                url: '/users'
+                url: '/users',
+                headers : {
+                    'Authorization' : jwt,
+                    'Content-Type' : 'application/json; charset=utf-8'
+                }
             };
 
             server.inject(options, (response) => {
@@ -135,7 +215,11 @@ describe('User Boilerplate API server', () => {
                 const userId = response.result[0].id;
                 const delOptions = {
                     method: 'DELETE',
-                    url: '/users/' + userId
+                    url: '/users/' + userId,
+                    headers : {
+                        'Authorization' : jwt,
+                        'Content-Type' : 'application/json; charset=utf-8'
+                    }
                 };
 
                 server.inject(delOptions, (delResponse) => {
