@@ -51,7 +51,7 @@ const manifest = module.exports = {
 
 };
 
-if (process.env.NODE_ENV !== 'prod') {
+if (process.env.NODE_ENV !== 'production') {
     manifest.server.debug = {
         log: ['error', 'implementation', 'internal'],
         request: ['error', 'implementation', 'internal']

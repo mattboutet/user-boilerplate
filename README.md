@@ -16,7 +16,7 @@ Now install the dependencies and start running the server
 ```bash
 $ npm install
 $ npm test
-$ NODE_ENV=dev npm start
+$ NODE_ENV=development npm start
 ```
 
 If everything goes well you should see this
