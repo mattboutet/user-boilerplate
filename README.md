@@ -30,7 +30,7 @@ If everything goes well you should see this
 Now your app is running at [http://0.0.0.0:3000](http://0.0.0.0:3000)
 
 ### Tools
-Here are a list of tools we include in the project :octocat:
+Here are some of the tools we include in the project :octocat:
 
 Name | Description
 ------------ | -------------
